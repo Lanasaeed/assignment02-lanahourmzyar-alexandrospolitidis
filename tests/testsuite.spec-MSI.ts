@@ -107,3 +107,5 @@ test.describe('TheTester Hotel API Tests', () => {
     const updatedClient = await response.json();
     expect(updatedClient.name).toBe(payload.name);
   });
+
+})
