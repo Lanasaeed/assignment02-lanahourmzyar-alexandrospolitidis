@@ -65,4 +65,15 @@ test.describe('TheTester Hotel API Tests', () => {
     expect(client.name).toBe(payload.name);
     expect(client.email).toBe(payload.email);
   });
+
+  // 4. Get All Clients
+  test('Test case 04 - Get all clients', async () => {
+    const response = await request.get('/api/clients', {
+      headers: { 'X-user-auth': JSON.stringify({ username: 'tester01', token }) },
+    });
+    expect(response.ok()).toBeTruthy();
+    expect(response.status()).toBe(200);
+    const clients = await response.json();
+    expect(clients.length).toBeGreaterThan(0);
+  });
 })
