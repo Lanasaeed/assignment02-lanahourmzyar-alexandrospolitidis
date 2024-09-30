@@ -119,4 +119,15 @@ test.describe('TheTester Hotel API Tests', () => {
   expect(bills.length).toBeGreaterThan(0);
 });
 
+// 8. Get Bill by ID
+test('Test case 08 - Get bill by ID', async () => {
+  const billId = 1;
+  const response = await request.get(`/api/bill/${billId}`, {
+    headers: { 'X-user-auth': JSON.stringify({ username: 'tester01', token }) },
+  });
+  expect(response.ok()).toBeTruthy();
+  const bill = await response.json();
+  expect(bill.id).toBe(billId);
+});
+
 })
