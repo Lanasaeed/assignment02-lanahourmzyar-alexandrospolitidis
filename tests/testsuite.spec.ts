@@ -130,4 +130,18 @@ test('Test case 08 - Get bill by ID', async () => {
   expect(bill.id).toBe(billId);
 });
 
+// 9. Delete Bill by ID
+test('Test case 09 - Delete bill by ID', async () => {
+  const billId = 1;
+  const deleteResponse = await request.delete(`/api/bill/${billId}`, {
+    headers: { 'X-user-auth': JSON.stringify({ username: 'tester01', token }) },
+  });
+  expect(deleteResponse.ok()).toBeTruthy();
+
+  const getResponse = await request.get(`/api/bill/${billId}`, {
+    headers: { 'X-user-auth': JSON.stringify({ username: 'tester01', token }) },
+  });
+  expect(getResponse.status()).toBe(404); //bugg i systemet.
+});
+
 })
