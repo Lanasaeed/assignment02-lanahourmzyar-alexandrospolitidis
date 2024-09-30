@@ -1,0 +1,98 @@
+### //login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "username": "tester01",
+  "password": "GteteqbQQgSr88SwNExUQv2ydb7xuf8c"
+}
+
+###
+
+### 1. Get All Rooms
+GET http://localhost:3000/api/rooms
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"202cda12cb3885bb68d6dce4d8d6ee10"}
+
+###
+
+### 2. Get Room by ID
+GET http://localhost:3000/api/room/1
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"202cda12cb3885bb68d6dce4d8d6ee10"}
+
+###
+
+### 3. Create a New Client
+POST http://localhost:3000/api/client/new
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"4ea5bc0c06b2983be25c77d417f9b3f6"}
+
+{
+  "name": "Anna Svensson",
+  "email": "anna.svensson@example.com",
+  "telephone": "0700000000"
+}
+
+###
+
+### 4. Get All Clients
+GET http://localhost:3000/api/clients
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"63ceeead9973c85c7f2158d33902bd6a"}
+
+###
+
+### 5. Get Client by ID
+GET http://localhost:3000/api/client/2
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"63ceeead9973c85c7f2158d33902bd6a"}
+
+###
+
+### 6. Update Client
+PUT http://localhost:3000/api/client/1
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"63ceeead9973c85c7f2158d33902bd6a"}
+
+{
+  "id": "1",
+  "name": "Stina Johnson",
+  "email": "stina.johnson@example.com",
+  "telephone": "0700000000"
+}
+
+###
+
+### 7. Get All Bills
+GET http://localhost:3000/api/bills
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"d4f0d255ddf8a4cb25007a2946ab9608"}
+
+###
+
+### 8. Get Bill by ID
+GET http://localhost:3000/api/bill/1
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"d4f0d255ddf8a4cb25007a2946ab9608"}
+
+###
+
+### 9. Delete Bill by ID
+DELETE http://localhost:3000/api/bill/1
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"ee399bb21589894c2dad35f8d113989d"}
+
+
+### 10. Update Reservation
+PUT http://localhost:3000/api/reservation/1
+Content-Type: application/json
+X-user-auth: {"username":"tester01","token":"f696371a8f3d61ee55e51ee735d7962b"}
+
+{
+  "start": "2024-09-26",
+  "end": "2024-09-30",
+  "client": "Cameron Steuber",
+  "room": "Floor 1, Room 101",
+  "bill": "ID: 1"
+}
