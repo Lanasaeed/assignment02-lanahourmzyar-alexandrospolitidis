@@ -46,4 +46,23 @@ test.describe('TheTester Hotel API Tests', () => {
     const room = await response.json();
     expect(room.id).toBe(roomId);
   });
+  
+  // 3. Create a New Client
+  test('Test case 03 - Create a new client', async () => {
+    const payload = {
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+    };
+    const response = await request.post('/api/client/new', {
+      data: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-user-auth': JSON.stringify({ username: 'tester01', token }),
+      },
+    });
+    expect(response.ok()).toBeTruthy();
+    const client = await response.json();
+    expect(client.name).toBe(payload.name);
+    expect(client.email).toBe(payload.email);
+  });
 })
