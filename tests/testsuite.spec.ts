@@ -34,4 +34,16 @@ test.describe('TheTester Hotel API Tests', () => {
     const rooms = await response.json();
     expect(rooms.length).toBeGreaterThan(0);
   });
+
+  // 2. Get Room by ID
+  test('Test case 02 - Get room by ID', async () => {
+    const roomId = 1;
+    const response = await request.get(`/api/room/${roomId}`, {
+      headers: { 'X-user-auth': JSON.stringify({ username: 'tester01', token }) },
+    });
+    expect(response.ok()).toBeTruthy();
+
+    const room = await response.json();
+    expect(room.id).toBe(roomId);
+  });
 })
